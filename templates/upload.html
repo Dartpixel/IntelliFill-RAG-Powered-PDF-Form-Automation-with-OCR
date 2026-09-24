@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intelligent PDF Auto Filler</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <main class="shell">
+        <section class="app-panel upload-panel">
+            <div class="brand-row">
+                <div class="brand-mark">PDF</div>
+                <div>
+                    <p class="eyebrow">Knowledge-base powered form fill</p>
+                    <h1>Intelligent PDF Auto Filler</h1>
+                </div>
+            </div>
+
+            <div class="workflow-strip" aria-label="Workflow progress">
+                <span class="step active">Upload</span>
+                <span class="step">Review</span>
+                <span class="step">Download</span>
+            </div>
+
+            <form class="upload-form" method="post" action="/upload" enctype="multipart/form-data">
+                <label class="drop-zone" for="pdf_file">
+                    <input id="pdf_file" type="file" name="pdf_file" accept=".pdf" required>
+                    <span class="drop-icon">+</span>
+                    <span class="drop-title">Select empty PDF template</span>
+                    <span class="drop-meta" id="fileName">PDF file required</span>
+                </label>
+
+                <button class="primary-action" type="submit">
+                    Continue to Review
+                </button>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        const fileInput = document.querySelector("#pdf_file");
+        const fileName = document.querySelector("#fileName");
+        const form = document.querySelector(".upload-form");
+
+        fileInput.addEventListener("change", () => {
+            fileName.textContent = fileInput.files.length ? fileInput.files[0].name : "PDF file required";
+        });
+
+        form.addEventListener("submit", () => {
+            form.classList.add("is-loading");
+        });
+    </script>
+</body>
+
+</html>

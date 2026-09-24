@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Generated Values</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <main class="shell">
+        <section class="app-panel review-panel">
+            <div class="brand-row compact">
+                <div class="brand-mark">AI</div>
+                <div>
+                    <p class="eyebrow">Generated from knowledge base</p>
+                    <h1>Review Values</h1>
+                </div>
+            </div>
+
+            <div class="workflow-strip" aria-label="Workflow progress">
+                <span class="step done">Upload</span>
+                <span class="step active">Review</span>
+                <span class="step">Download</span>
+            </div>
+
+            {% if generated_values %}
+                <form class="review-form" method="post" action="/generate-pdf">
+                    <div class="field-grid">
+                        {% for field, value in generated_values.items() %}
+                            <label class="field-card">
+                                <span>{{ field.replace('_', ' ') }}</span>
+                                <input type="text" name="{{ field }}" value="{{ value }}">
+                            </label>
+                        {% endfor %}
+                    </div>
+
+                    <div class="action-row">
+                        <a class="secondary-action" href="/">Start Over</a>
+                        <button class="primary-action" type="submit">Generate Filled PDF</button>
+                    </div>
+                </form>
+            {% else %}
+                <div class="empty-state">
+                    <div class="empty-code">NO FIELDS</div>
+                    <h2>No fillable fields found</h2>
+                    <p>No AcroForm fields or OCR-detected labels were found in the uploaded PDF.</p>
+                    <a class="primary-link" href="/">Upload Different PDF</a>
+                </div>
+            {% endif %}
+        </section>
+    </main>
+
+    <script>
+        const form = document.querySelector(".review-form");
+
+        if (form) {
+            form.addEventListener("submit", () => {
+                form.classList.add("is-loading");
+            });
+        }
+    </script>
+</body>
+
+</html>

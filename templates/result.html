@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Generated</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <main class="shell">
+        <section class="app-panel result-panel">
+            <div class="success-orbit">
+                <span class="success-ring"></span>
+                <span class="success-check">✓</span>
+            </div>
+
+            <p class="eyebrow">Completed</p>
+            <h1>PDF Generated</h1>
+            <p class="result-copy">Your filled PDF is ready.</p>
+
+            <div class="workflow-strip" aria-label="Workflow progress">
+                <span class="step done">Upload</span>
+                <span class="step done">Review</span>
+                <span class="step active">Download</span>
+            </div>
+
+            <div class="download-card">
+                <span class="file-chip">{{ file_name }}</span>
+                <a class="primary-link" href="/download/{{ file_name }}">Download Filled PDF</a>
+                <a class="secondary-action" href="/">Upload Another PDF</a>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>

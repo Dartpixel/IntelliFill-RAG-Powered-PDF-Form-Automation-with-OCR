@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header error">
+            <h1>✗ Error Processing PDF</h1>
+            <p>Something went wrong</p>
+        </div>
+
+        <div class="error-box">
+            <div class="error-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+            </div>
+            
+            <h2>Processing Failed</h2>
+            
+            <div class="error-message">
+                <p><strong>Error:</strong> {{ error }}</p>
+            </div>
+
+            <div class="error-actions">
+                <a href="/" class="btn btn-primary">
+                    <span>⬅ Back to Home</span>
+                </a>
+                <a href="/new" class="btn btn-secondary">
+                    <span>➕ Try Again</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="help-box">
+            <h3>Troubleshooting</h3>
+            <ul>
+                <li>Make sure the PDF contains form fields</li>
+                <li>Try with a different PDF file</li>
+                <li>Ensure the PDF is not password-protected</li>
+                <li>Check that the PDF file is not corrupted</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
